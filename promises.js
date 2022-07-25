@@ -12,40 +12,40 @@ class Mkulima{
     this.farms.splice(farmIndex, 1);
     }
     this.updateFarm = function(farmId,newFarmId,newFarmName,newFarmerName,newPhone,newAddress){
-    let specificFarm = this.farms.find(item => item.farmId ===farmId)
-    specificFarm.farmId =newFarmId;
-    specificFarm.farmName =newFarmName;
-    specificFarm.farmer =newFarmerName;
-    specificFarm.phone =newPhone;
-    specificFarm.address =newAddress;
+    let Farm = this.farms.find(item => item.farmId ===farmId)
+    Farm.farmId =newFarmId;
+    Farm.farmName =newFarmName;
+    Farm.farmer =newFarmerName;
+    Farm.phone =newPhone;
+    Farm.address =newAddress;
     }
     this.getFarm = (Id)=>{
     console.log(this.farms.find(object=>object.farmId===Id))
     }
     this.addProduct = (productId, productName, price) => {
-    this.product.push({productId,productName,price})
+    this.products.push({productId,productName,price})
    
     }
     this.removeProduct = (productId) => {
-    let specific = this.product.find(item => item.productId ===productId);
-    let productIndex = this.product.indexOf(specific);
-    this.product.splice(productIndex, 1);
+    let specific = this.products.find(item => item.productId ===productId);
+    let productsIndex = this.products.indexOf(specific);
+    this.products.splice(productsIndex, 1);
     }
     this.updateProduct = function(productId,newProductId,newProductName,newPrice){
-    let specificProduct = this.product.find(item => item.productId ===productId)
+    let specificProduct = this.products.find(item => item.productId ===productId)
     specificProduct.productId =newProductId;
     specificProduct.productName = newProductName;
     specificProduct.price = newPrice;
     }
     this.getProduct = (Id)=>{
-    console.log(this.product.find(object=>object.productId===Id))
+    console.log(this.products.find(object=>object.productId===Id))
     }
     this.printProducts = ()=>{
-    console.log(this.product)
+    console.log(this.products)
     }
     this.calculateOrderCost = (productId,quantity)=>{
-    let specificProduct = this.product.find(object=>object.productId===productId);
-    console.log(`${quantity} ${specificProduct.productName} for KES ${quantity*specificProduct.price}`);
+    let specificProducts = this.products.find(object=>object.productId===productId);
+    console.log(`${quantity} for KES ${quantity*specificProducts.price}`);
     }
     }
     }
@@ -60,5 +60,18 @@ class Mkulima{
     console.log(farm1.farms)
    
     farm1.updateFarm("8642","6666","Macharia","Catherine","0748377845", "A1876");
+    farm1.getFarm("6854");
+    farm1.addProduct("100","beans",70);
+    farm1.addProduct("400","sugar",100);
+    farm1.addProduct("404","Rice",150);
+    farm1.addProduct("600","Wheat",120);
+    console.log(farm1.products);
+
+    farm1.removeProduct("400");
+    console.log(farm1.products);
+
+    farm1.getProduct("100");
+    farm1.printProducts();
+    farm1.calculateOrderCost("400",100);
 
      
